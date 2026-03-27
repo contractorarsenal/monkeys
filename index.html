@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Monkey's Painting LLC — 15 years of experience. Interior, exterior, cabinets & more in Forest Grove, OR." />
+  <title>Monkey's Painting LLC | Forest Grove, OR</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,800;0,900;1,700;1,800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:    #FAF7F2;
+      --cream-dk: #F2EDE4;
+      --cream-dkr:#E8E0D3;
+      --white:    #FFFFFF;
+      --terra:    #C96A3C;
+      --terra-lt: #E07B4B;
+      --terra-bg: rgba(201,106,60,0.09);
+      --green:    #3A6B4A;
+      --green-lt: #4D8A60;
+      --ink:      #1C1C1C;
+      --ink-md:   #3D3D3D;
+      --ink-lt:   #6B6B6B;
+      --ink-dim:  rgba(28,28,28,0.4);
+      --r:        10px;
+      --tr:       0.24s ease;
+      --sh:       0 4px 24px rgba(0,0,0,0.07);
+      --sh-lg:    0 12px 48px rgba(0,0,0,0.11);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    a { text-decoration: none; color: inherit; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    .container { width: 100%; max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+    .label-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terra);
+    }
+    .label-tag::before {
+      content: '';
+      display: block;
+      width: 22px; height: 2px;
+      background: var(--terra);
+      flex-shrink: 0;
+    }
+
+    /* BUTTONS */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-weight: 700;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      padding: 14px 28px;
+      border-radius: 100px;
+      border: none;
+      cursor: pointer;
+      transition: all var(--tr);
+      white-space: nowrap;
+    }
+    .btn-terra {
+      background: var(--terra);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(201,106,60,0.28);
+    }
+    .btn-terra:hover { background: var(--terra-lt); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(201,106,60,0.36); }
+    .btn-green { background: var(--green); color: #fff; box-shadow: 0 4px 14px rgba(58,107,74,0.22); }
+    .btn-green:hover { background: var(--green-lt); transform: translateY(-2px); }
+    .btn-outline { background: transparent; color: var(--ink); border: 1.5px solid var(--cream-dkr); }
+    .btn-outline:hover { border-color: var(--terra); color: var(--terra); transform: translateY(-2px); }
+    .btn-outline-w { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.4); }
+    .btn-outline-w:hover { background: rgba(255,255,255,0.1); border-color: #fff; transform: translateY(-2px); }
+
+    /* ANNOUNCE */
+    .announce { background: var(--green); padding: 10px 0; text-align: center; }
+    .announce a { font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.88); letter-spacing: 0.04em; transition: color var(--tr); }
+    .announce a:hover { color: #fff; }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(250,247,242,0.96);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--cream-dkr);
+      transition: box-shadow var(--tr);
+    }
+    nav.shadow { box-shadow: 0 4px 24px rgba(0,0,0,0.08); }
+    .nav-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px; padding: 0 24px;
+      max-width: 1160px; margin: 0 auto;
+    }
+    .logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .logo-badge {
+      width: 44px; height: 44px; background: var(--terra); border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.4rem; flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(201,106,60,0.28);
+    }
+    .logo-name {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; font-size: 1.12rem; color: var(--ink); line-height: 1.2;
+    }
+    .logo-name span { color: var(--terra); }
+    .logo-sub { font-size: 0.62rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-lt); display: block; margin-top: 2px; }
+    .nav-links { display: flex; align-items: center; gap: 26px; list-style: none; }
+    .nav-links a {
+      font-size: 0.84rem; font-weight: 600; color: var(--ink-md);
+      transition: color var(--tr); position: relative; padding-bottom: 2px;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0; right: 0;
+      height: 2px; background: var(--terra);
+      transform: scaleX(0); transform-origin: left; transition: transform 0.2s ease;
+    }
+    .nav-links a:hover { color: var(--terra); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-phone { font-weight: 700; font-size: 0.9rem; color: var(--ink); transition: color var(--tr); }
+    .nav-phone:hover { color: var(--terra); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 6px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--ink); border-radius: 2px; transition: var(--tr); }
+
+    /* MOBILE MENU */
+    .mobile-menu { display: none; position: fixed; inset: 0; background: var(--cream); z-index: 300; flex-direction: column; align-items: center; justify-content: center; gap: 26px; }
+    .mobile-menu.open { display: flex; }
+    .mobile-menu a { font-family: 'Playfair Display', serif; font-size: 2rem; font-weight: 900; color: var(--ink); transition: color var(--tr); }
+    .mobile-menu a:hover { color: var(--terra); }
+    .mobile-close { position: absolute; top: 20px; right: 24px; background: none; border: none; color: var(--ink-lt); font-size: 2rem; cursor: pointer; }
+
+    /* HERO */
+    #hero { position: relative; min-height: 92vh; display: flex; align-items: center; overflow: hidden; }
+    #hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to right, rgba(25,12,5,0.8) 0%, rgba(25,12,5,0.55) 55%, rgba(25,12,5,0.18) 100%),
+        url('https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=1800&q=80') center / cover no-repeat;
+    }
+    #hero::after {
+      content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 220px;
+      background: linear-gradient(to top, var(--cream), transparent);
+    }
+    .hero-inner { position: relative; z-index: 2; padding: 130px 0 170px; max-width: 680px; }
+    .hero-pill {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(255,255,255,0.12); backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.22); border-radius: 100px;
+      padding: 7px 16px; margin-bottom: 28px;
+    }
+    .hero-pill-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #6EE7A0; box-shadow: 0 0 8px #6EE7A0;
+      animation: blink 2s infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1;} 50%{opacity:0.4;} }
+    .hero-pill span { font-size: 0.74rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.88); }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-weight: 900; font-style: italic;
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      color: #fff; line-height: 1.0; letter-spacing: -0.02em; margin-bottom: 20px;
+    }
+    .hero-title em { font-style: normal; color: #F4B97A; }
+    .hero-sub { font-size: clamp(1rem, 1.8vw, 1.12rem); color: rgba(255,255,255,0.72); line-height: 1.8; max-width: 480px; margin-bottom: 32px; }
+    .hero-phone { display: block; font-family: 'Playfair Display', serif; font-weight: 700; font-size: clamp(1.8rem, 4vw, 2.8rem); color: #fff; margin-bottom: 32px; transition: color var(--tr); }
+    .hero-phone:hover { color: #F4B97A; }
+    .hero-ctas { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+    .hero-trust {
+      display: flex; align-items: center; gap: 20px; flex-wrap: wrap;
+      margin-top: 52px; padding-top: 36px; border-top: 1px solid rgba(255,255,255,0.14);
+    }
+    .htrust { display: flex; align-items: center; gap: 9px; font-size: 0.82rem; font-weight: 600; color: rgba(255,255,255,0.68); }
+    .htrust-icon {
+      width: 30px; height: 30px; border-radius: 8px;
+      background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 0.88rem; flex-shrink: 0;
+    }
+
+    /* MARQUEE */
+    .marquee-wrap { background: var(--terra); overflow: hidden; padding: 12px 0; }
+    .marquee-track { display: flex; gap: 0; animation: marquee 22s linear infinite; width: max-content; }
+    .marquee-track:hover { animation-play-state: paused; }
+    @keyframes marquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+    .marquee-item { display: inline-flex; align-items: center; gap: 14px; padding: 0 28px; white-space: nowrap; }
+    .marquee-text { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(255,255,255,0.9); }
+    .marquee-sep { color: rgba(255,255,255,0.4); font-size: 0.65rem; }
+
+    /* ABOUT */
+    #about { padding: 110px 0; background: var(--white); position: relative; overflow: hidden; }
+    #about::before {
+      content: ''; position: absolute; top: -80px; right: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,106,60,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; z-index: 1; }
+    .about-imgs { position: relative; }
+    .about-img-main { border-radius: 18px; overflow: hidden; aspect-ratio: 4/3; }
+    .about-img-main img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
+    .about-img-main:hover img { transform: scale(1.04); }
+    .founded-card {
+      position: absolute; bottom: -28px; right: -24px;
+      background: var(--green); color: #fff; border-radius: 14px;
+      padding: 20px 24px; text-align: center; box-shadow: var(--sh-lg);
+    }
+    .founded-num { font-family: 'Playfair Display', serif; font-size: 1.9rem; font-weight: 900; line-height: 1; }
+    .founded-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.72; display: block; margin-top: 4px; }
+    .about-content .label-tag { margin-bottom: 18px; }
+    .about-heading { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 900; color: var(--ink); margin-bottom: 20px; line-height: 1.1; }
+    .about-text { font-size: 0.97rem; color: var(--ink-lt); line-height: 1.9; margin-bottom: 16px; }
+    .about-quote {
+      background: var(--terra-bg); border-left: 3px solid var(--terra);
+      border-radius: 0 10px 10px 0; padding: 18px 22px;
+      margin: 22px 0 32px; font-size: 0.92rem; color: var(--ink-md); font-style: italic; line-height: 1.78;
+    }
+
+    /* SERVICES */
+    #services { padding: 110px 0; background: var(--cream); }
+    .sec-hdr { text-align: center; margin-bottom: 60px; }
+    .sec-hdr .label-tag { margin: 0 auto 16px; }
+    .sec-title { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4.5vw, 3.2rem); font-weight: 900; color: var(--ink); margin-bottom: 14px; }
+    .sec-title span { color: var(--terra); }
+    .sec-sub { font-size: 0.97rem; color: var(--ink-lt); max-width: 480px; margin: 0 auto; line-height: 1.8; }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .svc-card {
+      background: var(--white); border-radius: 16px; padding: 36px 28px;
+      border: 1.5px solid var(--cream-dkr); transition: all var(--tr);
+      position: relative; overflow: hidden;
+    }
+    .svc-card::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px; background: var(--terra); transform: scaleX(0); transform-origin: left; transition: transform 0.3s ease; }
+    .svc-card:hover { border-color: rgba(201,106,60,0.22); transform: translateY(-6px); box-shadow: var(--sh-lg); }
+    .svc-card:hover::after { transform: scaleX(1); }
+    .svc-icon { width: 52px; height: 52px; background: var(--terra-bg); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; transition: background var(--tr); }
+    .svc-card:hover .svc-icon { background: var(--terra); }
+    .svc-name { font-weight: 700; font-size: 1.02rem; color: var(--ink); margin-bottom: 10px; }
+    .svc-desc { font-size: 0.87rem; color: var(--ink-lt); line-height: 1.8; }
+
+    /* STATS */
+    .stats-band { background: var(--green); }
+    .stats-row { display: grid; grid-template-columns: repeat(4, 1fr); }
+    .stat-box { padding: 48px 20px; text-align: center; border-right: 1px solid rgba(255,255,255,0.12); }
+    .stat-box:last-child { border-right: none; }
+    .stat-num { font-family: 'Playfair Display', serif; font-size: clamp(2.4rem, 4.5vw, 3.6rem); font-weight: 900; color: #fff; line-height: 1; margin-bottom: 7px; }
+    .stat-lbl { font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.52); }
+
+    /* WHY */
+    #why { padding: 110px 0; background: var(--cream-dk); }
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; margin-top: 56px; }
+    .why-card {
+      background: var(--white); border-radius: 16px; padding: 36px 32px;
+      border: 1.5px solid var(--cream-dkr); transition: all var(--tr); position: relative; overflow: hidden;
+    }
+    .why-card:hover { border-color: rgba(201,106,60,0.22); box-shadow: var(--sh); transform: translateY(-3px); }
+    .why-num-bg { position: absolute; top: 10px; right: 18px; font-family: 'Playfair Display', serif; font-size: 5rem; font-weight: 900; color: rgba(201,106,60,0.06); line-height: 1; pointer-events: none; user-select: none; }
+    .why-icon { width: 48px; height: 48px; background: var(--terra-bg); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; margin-bottom: 18px; }
+    .why-title { font-weight: 700; font-size: 1.02rem; color: var(--ink); margin-bottom: 10px; }
+    .why-text { font-size: 0.9rem; color: var(--ink-lt); line-height: 1.85; }
+
+    /* PROCESS */
+    #process { padding: 110px 0; background: var(--white); }
+    .process-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 56px; position: relative; }
+    .process-steps::before { content: ''; position: absolute; top: 34px; left: calc(12.5% + 2px); right: calc(12.5% + 2px); height: 1px; background: linear-gradient(90deg, var(--terra) 0%, rgba(201,106,60,0.1) 100%); }
+    .ps { text-align: center; padding: 0 18px; position: relative; z-index: 1; }
+    .ps-circle { width: 68px; height: 68px; border-radius: 50%; background: var(--cream); border: 2px solid var(--cream-dkr); display: flex; align-items: center; justify-content: center; margin: 0 auto 22px; font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--ink-lt); transition: all var(--tr); }
+    .ps:hover .ps-circle { border-color: var(--terra); color: var(--terra); background: var(--terra-bg); transform: scale(1.08); }
+    .ps-title { font-weight: 700; font-size: 0.9rem; color: var(--ink); margin-bottom: 10px; }
+    .ps-desc { font-size: 0.84rem; color: var(--ink-lt); line-height: 1.75; }
+
+    /* REVIEWS */
+    #reviews { padding: 110px 0; background: var(--cream); }
+    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 56px; }
+    .review-card {
+      background: var(--white); border-radius: 16px; padding: 30px 26px;
+      border: 1.5px solid var(--cream-dkr); display: flex; flex-direction: column;
+      transition: all var(--tr);
+    }
+    .review-card:hover { border-color: rgba(201,106,60,0.28); box-shadow: var(--sh); transform: translateY(-4px); }
+    .review-card.featured { grid-column: 1 / -1; background: var(--terra); border-color: transparent; padding: 40px 44px; }
+    .review-stars { color: #F5A623; font-size: 0.88rem; letter-spacing: 2px; margin-bottom: 14px; }
+    .review-card.featured .review-stars { color: #FFD580; }
+    .review-text { font-size: 0.9rem; color: var(--ink-md); line-height: 1.88; flex: 1; margin-bottom: 20px; font-style: italic; }
+    .review-card.featured .review-text { font-size: 1.06rem; color: rgba(255,255,255,0.9); }
+    .review-footer { display: flex; align-items: center; gap: 12px; padding-top: 18px; border-top: 1px solid var(--cream-dkr); }
+    .review-card.featured .review-footer { border-top-color: rgba(255,255,255,0.2); }
+    .review-avatar { width: 40px; height: 40px; border-radius: 50%; background: var(--terra); display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1rem; color: #fff; flex-shrink: 0; }
+    .review-card.featured .review-avatar { background: rgba(255,255,255,0.2); }
+    .review-name { font-weight: 700; font-size: 0.88rem; color: var(--ink); }
+    .review-card.featured .review-name { color: #fff; }
+    .review-src { font-size: 0.72rem; color: var(--ink-dim); margin-top: 2px; }
+    .review-card.featured .review-src { color: rgba(255,255,255,0.55); }
+
+    /* QUOTE */
+    #quote { padding: 110px 0; background: var(--cream-dk); }
+    .quote-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
+    .quote-left .label-tag { margin-bottom: 16px; }
+    .quote-heading { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.5rem); font-weight: 900; color: var(--ink); margin-bottom: 16px; line-height: 1.1; }
+    .quote-heading span { color: var(--terra); }
+    .quote-sub { font-size: 0.97rem; color: var(--ink-lt); line-height: 1.9; margin-bottom: 36px; }
+    .cinfo-list { display: flex; flex-direction: column; gap: 12px; }
+    .cinfo {
+      display: flex; align-items: center; gap: 16px;
+      padding: 18px 20px; background: var(--white);
+      border-radius: 12px; border: 1.5px solid var(--cream-dkr);
+      border-left: 3px solid var(--terra); transition: border-left-color var(--tr);
+    }
+    .cinfo:hover { border-left-color: var(--green); }
+    .cinfo-icon { font-size: 1.2rem; flex-shrink: 0; }
+    .cinfo-lbl { font-size: 0.64rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--terra); margin-bottom: 2px; }
+    .cinfo-val { font-weight: 600; font-size: 0.96rem; color: var(--ink); }
+    .cinfo-val a:hover { color: var(--terra); transition: color var(--tr); }
+    .qform { background: var(--white); border-radius: 20px; padding: 44px 40px; box-shadow: var(--sh-lg); border: 1.5px solid var(--cream-dkr); }
+    .qform-title { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; color: var(--ink); margin-bottom: 28px; }
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .fg { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+    .fg.full { grid-column: 1 / -1; }
+    label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-lt); }
+    input, select, textarea { background: var(--cream); border: 1.5px solid var(--cream-dkr); border-radius: 8px; padding: 13px 16px; color: var(--ink); font-family: 'Plus Jakarta Sans', sans-serif; font-size: 0.9rem; width: 100%; outline: none; transition: border-color var(--tr), box-shadow var(--tr); }
+    input::placeholder, textarea::placeholder { color: var(--ink-dim); }
+    input:focus, select:focus, textarea:focus { border-color: var(--terra); background: var(--white); box-shadow: 0 0 0 3px rgba(201,106,60,0.1); }
+    select option { background: #fff; color: var(--ink); }
+    textarea { resize: vertical; min-height: 100px; }
+    .form-submit { margin-top: 8px; }
+    .form-submit .btn { width: 100%; font-size: 0.88rem; padding: 16px; }
+    .form-note { text-align: center; margin-top: 10px; font-size: 0.72rem; color: var(--ink-dim); }
+
+    /* FOOTER */
+    footer { background: var(--ink); padding: 70px 0 32px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 48px; }
+    .footer-logo-name { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; color: #fff; }
+    .footer-logo-name span { color: #F4B97A; }
+    .footer-desc { font-size: 0.88rem; color: rgba(255,255,255,0.38); line-height: 1.9; margin-top: 14px; max-width: 280px; }
+    .footer-col-title { font-size: 0.66rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #F4B97A; margin-bottom: 20px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-links a { font-size: 0.88rem; color: rgba(255,255,255,0.4); transition: color var(--tr); }
+    .footer-links a:hover { color: #fff; }
+    .footer-contacts { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .footer-contacts li { font-size: 0.88rem; color: rgba(255,255,255,0.38); display: flex; gap: 8px; }
+    .footer-contacts a { color: rgba(255,255,255,0.38); transition: color var(--tr); }
+    .footer-contacts a:hover { color: #F4B97A; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.07); flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-lic { display: flex; align-items: center; gap: 8px; font-size: 0.78rem; color: rgba(255,255,255,0.2); }
+    .footer-dot { width: 6px; height: 6px; border-radius: 50%; background: #6EE7A0; box-shadow: 0 0 8px #6EE7A0; }
+
+    /* FLOATING */
+    .float-cta { position: fixed; bottom: 24px; right: 24px; z-index: 150; display: none; }
+    .float-cta.visible { display: block; }
+    .float-cta .btn { box-shadow: 0 8px 28px rgba(201,106,60,0.4); }
+
+    /* REVEAL */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.22,0.61,0.36,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .rd1{transition-delay:0.1s;} .rd2{transition-delay:0.2s;} .rd3{transition-delay:0.3s;} .rd4{transition-delay:0.4s;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .services-grid{grid-template-columns:repeat(2,1fr);}
+      .stats-row{grid-template-columns:repeat(2,1fr);}
+      .stat-box:nth-child(2){border-right:none;}
+      .reviews-grid{grid-template-columns:1fr 1fr;}
+      .review-card.featured{padding:32px 28px;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
+      .footer-grid>*:first-child{grid-column:1/-1;}
+    }
+    @media(max-width:860px){
+      .nav-links,.nav-phone{display:none;}
+      .hamburger{display:flex;}
+      .about-grid{grid-template-columns:1fr;gap:60px;}
+      .founded-card{right:0;}
+      .why-grid{grid-template-columns:1fr;}
+      .process-steps{grid-template-columns:repeat(2,1fr);gap:36px;}
+      .process-steps::before{display:none;}
+      .reviews-grid{grid-template-columns:1fr;}
+      .review-card.featured{grid-column:auto;padding:30px 26px;}
+      .quote-inner{grid-template-columns:1fr;gap:50px;}
+    }
+    @media(max-width:600px){
+      .services-grid{grid-template-columns:1fr;}
+      .stats-row{grid-template-columns:1fr;}
+      .stat-box{border-right:none;border-bottom:1px solid rgba(255,255,255,0.1);}
+      .stat-box:last-child{border-bottom:none;}
+      .process-steps{grid-template-columns:1fr;}
+      .form-row-2{grid-template-columns:1fr;}
+      .qform{padding:28px 20px;}
+      .footer-grid{grid-template-columns:1fr;}
+      .footer-grid>*:first-child{grid-column:auto;}
+      .hero-ctas{flex-direction:column;}
+      .hero-ctas .btn{width:100%;justify-content:center;}
+    }
+  </style>
+</head>
+<body>
+
+  <div class="float-cta" id="floatCta">
+    <a href="#quote" class="btn btn-terra">Free Quote ↗</a>
+  </div>
+
+  <div class="mobile-menu" id="mobileMenu">
+    <button class="mobile-close" id="mobileClose">&times;</button>
+    <a href="#about" onclick="closeMobile()">About</a>
+    <a href="#services" onclick="closeMobile()">Services</a>
+    <a href="#why" onclick="closeMobile()">Why Us</a>
+    <a href="#reviews" onclick="closeMobile()">Reviews</a>
+    <a href="#quote" onclick="closeMobile()">Contact</a>
+    <a href="tel:+15036166032" style="color:var(--terra);">(503) 616-6032</a>
+    <a href="#quote" class="btn btn-terra" onclick="closeMobile()" style="margin-top:8px;">Free Estimate</a>
+  </div>
+
+  <div class="announce">
+    <a href="#quote">📞 Call or text for a free estimate — (503) 616-6032 · Forest Grove, OR</a>
+  </div>
+
+  <nav id="navbar">
+    <div class="nav-inner">
+      <div class="logo-wrap">
+        <div class="logo-badge">🐒</div>
+        <div>
+          <div class="logo-name">Monkey's <span>Painting</span> LLC</div>
+          <span class="logo-sub">Forest Grove, OR · Est. 2020</span>
+        </div>
+      </div>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#why">Why Us</a></li>
+        <li><a href="#reviews">Reviews</a></li>
+        <li><a href="#quote">Contact</a></li>
+      </ul>
+      <div class="nav-right">
+        <a href="tel:+15036166032" class="nav-phone">(503) 616-6032</a>
+        <a href="#quote" class="btn btn-terra" style="padding:10px 22px;font-size:0.78rem;">Free Estimate</a>
+        <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+
+  <section id="hero">
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-pill">
+          <span class="hero-pill-dot"></span>
+          <span>Serving Forest Grove &amp; Tualatin Areas</span>
+        </div>
+        <h1 class="hero-title">
+          Your Home,<br /><em>Beautifully</em><br />Painted.
+        </h1>
+        <p class="hero-sub">Monkey's Painting LLC — 15 years of experience and a team that treats your home like their own.</p>
+        <a href="tel:+15036166032" class="hero-phone">(503) 616-6032</a>
+        <div class="hero-ctas">
+          <a href="#quote" class="btn btn-terra" style="font-size:0.9rem;padding:16px 36px;">Get a Free Estimate</a>
+          <a href="#services" class="btn btn-outline-w" style="font-size:0.9rem;padding:16px 36px;">Our Services</a>
+        </div>
+        <div class="hero-trust">
+          <div class="htrust"><div class="htrust-icon">✓</div>Licensed &amp; Insured</div>
+          <div class="htrust"><div class="htrust-icon">⭐</div>15 Yrs Experience</div>
+          <div class="htrust"><div class="htrust-icon">🏠</div>Res. &amp; Commercial</div>
+          <div class="htrust"><div class="htrust-icon">💬</div>Free Estimates</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee-wrap" aria-hidden="true">
+    <div class="marquee-track">
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Monkey's Painting LLC</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Interior &amp; Exterior</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Cabinet Refinishing</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Forest Grove, OR</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">15 Years Experience</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Staining · Drywall · Pressure Washing</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Free Estimates</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Monkey's Painting LLC</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Interior &amp; Exterior</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Cabinet Refinishing</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Forest Grove, OR</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">15 Years Experience</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Staining · Drywall · Pressure Washing</span></div>
+      <div class="marquee-item"><span class="marquee-sep">✦</span><span class="marquee-text">Free Estimates</span></div>
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="container">
+      <div class="about-grid">
+        <div class="about-imgs reveal">
+          <div class="about-img-main">
+            <img src="https://images.unsplash.com/photo-1562259949-e8e7689d7828?w=700&q=80" alt="Manuel and team at work" loading="lazy" />
+          </div>
+          <div class="founded-card">
+            <span class="founded-num">2020</span>
+            <span class="founded-lbl">Founded 05/05</span>
+          </div>
+        </div>
+        <div class="about-content">
+          <div class="label-tag reveal">Our Story</div>
+          <h2 class="about-heading reveal rd1">Built on Passion.<br />Backed by 15 Years.</h2>
+          <p class="about-text reveal rd2">Monkey's Painting LLC launched on May 5th, 2020 — not just as a business, but as a commitment to homeowners who deserve better. With 15 years of hands-on experience and a genuine love for the craft, Manuel built a team that shows up, communicates clearly, and delivers work worth bragging about.</p>
+          <blockquote class="about-quote reveal rd3">"Monkeys Painting LLC started on 05/05/2020 with passion for the industry and 15 years of experience to provide all our clients the best service &amp; quality work on residential and small commercial painting."</blockquote>
+          <a href="#quote" class="btn btn-terra reveal rd4">Get Your Free Estimate</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="label-tag reveal">What We Do</div>
+        <h2 class="sec-title reveal rd1">Our <span>Services</span></h2>
+        <p class="sec-sub reveal rd2">Interior, exterior, cabinets, staining, drywall, and more. One call covers it all.</p>
+      </div>
+      <div class="services-grid">
+        <div class="svc-card reveal"><div class="svc-icon">🏠</div><div class="svc-name">Exterior Painting</div><p class="svc-desc">Full prep, premium coatings, and a finish built to hold up to Oregon weather year after year.</p></div>
+        <div class="svc-card reveal rd1"><div class="svc-icon">✨</div><div class="svc-name">Interior Painting</div><p class="svc-desc">Crisp lines, zero mess, and a showroom-quality finish in every single room.</p></div>
+        <div class="svc-card reveal rd2"><div class="svc-icon">🍳</div><div class="svc-name">Cabinet Refinishing</div><p class="svc-desc">Transform your kitchen or bathroom without a full remodel. Factory-smooth results every time.</p></div>
+        <div class="svc-card reveal"><div class="svc-icon">🎨</div><div class="svc-name">Cabinet Painting</div><p class="svc-desc">Any color, any finish. Custom cabinet painting that makes the whole space feel brand new.</p></div>
+        <div class="svc-card reveal rd1"><div class="svc-icon">🌲</div><div class="svc-name">Staining</div><p class="svc-desc">Interior and exterior staining for decks, fences, and all wood surfaces. Beautiful and protective.</p></div>
+        <div class="svc-card reveal rd2"><div class="svc-icon">🖼️</div><div class="svc-name">Accent Walls</div><p class="svc-desc">Bold accent walls designed to anchor a room. Color guidance always included.</p></div>
+        <div class="svc-card reveal"><div class="svc-icon">🔧</div><div class="svc-name">Drywall Repair</div><p class="svc-desc">Holes, cracks, texture matching — all handled before the first coat. Seamless every time.</p></div>
+        <div class="svc-card reveal rd1"><div class="svc-icon">📄</div><div class="svc-name">Wallpaper Removal</div><p class="svc-desc">Full removal and surface prep so your new paint goes on smooth and stays looking fresh.</p></div>
+        <div class="svc-card reveal rd2"><div class="svc-icon">💧</div><div class="svc-name">Pressure Washing &amp; Carpentry</div><p class="svc-desc">Surface prep washing and small carpentry repairs — everything needed before we paint.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stats-band">
+    <div class="container">
+      <div class="stats-row">
+        <div class="stat-box"><div class="stat-num">15+</div><div class="stat-lbl">Years Experience</div></div>
+        <div class="stat-box"><div class="stat-num">9</div><div class="stat-lbl">Services Offered</div></div>
+        <div class="stat-box"><div class="stat-num">5 ★</div><div class="stat-lbl">Google Rated</div></div>
+        <div class="stat-box"><div class="stat-num">Free</div><div class="stat-lbl">Estimates Always</div></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="why">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="label-tag reveal">Why Choose Us</div>
+        <h2 class="sec-title reveal rd1">What Makes <span>Monkey's</span> Different</h2>
+        <p class="sec-sub reveal rd2">We built this company to be the contractor you actually want to call back.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why-card reveal"><span class="why-num-bg">01</span><div class="why-icon">🗣️</div><div class="why-title">Honest &amp; Up Front</div><p class="why-text">No surprises. We tell you exactly what needs to be done, what it costs, and how long it takes — before we ever start. Customers love us for it.</p></div>
+        <div class="why-card reveal rd1"><span class="why-num-bg">02</span><div class="why-icon">🔍</div><div class="why-title">Exceptional Attention to Detail</div><p class="why-text">Prep work is everything. We sand, patch, tape, and protect before any paint touches your walls. The finish shows it.</p></div>
+        <div class="why-card reveal rd2"><span class="why-num-bg">03</span><div class="why-icon">📱</div><div class="why-title">Responsive &amp; Communicative</div><p class="why-text">Questions? Changes? We're always reachable. You get real updates throughout the job — not radio silence and a finished bill.</p></div>
+        <div class="why-card reveal rd3"><span class="why-num-bg">04</span><div class="why-icon">❤️</div><div class="why-title">Built on Referrals</div><p class="why-text">Most of our new clients come from people who already hired us. When customers refer us to their own family, that tells us everything.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="process">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="label-tag reveal">How It Works</div>
+        <h2 class="sec-title reveal rd1">Simple Process.<br /><span>Serious Results.</span></h2>
+        <p class="sec-sub reveal rd2">From the first call to the final walkthrough — easy the whole way through.</p>
+      </div>
+      <div class="process-steps">
+        <div class="ps reveal"><div class="ps-circle">1</div><div class="ps-title">Free Consultation</div><p class="ps-desc">Call, text, or fill out the form. We assess your project at zero cost or pressure.</p></div>
+        <div class="ps reveal rd1"><div class="ps-circle">2</div><div class="ps-title">Detailed Estimate</div><p class="ps-desc">Clear, itemized quote. No hidden fees, no surprises.</p></div>
+        <div class="ps reveal rd2"><div class="ps-circle">3</div><div class="ps-title">Expert Execution</div><p class="ps-desc">We show up on time, work clean, and deliver beyond expectations.</p></div>
+        <div class="ps reveal rd3"><div class="ps-circle">4</div><div class="ps-title">Final Walkthrough</div><p class="ps-desc">Walk through every detail together. You sign off only when fully satisfied.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="reviews">
+    <div class="container">
+      <div class="sec-hdr">
+        <div class="label-tag reveal">5-Star Reviews</div>
+        <h2 class="sec-title reveal rd1">What Our <span>Clients</span> Say</h2>
+        <p class="sec-sub reveal rd2">Real reviews from real homeowners in the Forest Grove area.</p>
+      </div>
+      <div class="reviews-grid">
+        <div class="review-card featured reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Manuel and his team did an amazing job painting the interior of our house! He has great experience with the kind of paint we needed and good insight into how the color would flow within our space. They were meticulous, and very fast! They also gave a much needed refresh to the wood paneling on the outside of our house — it looks amazing now! He has also done several projects for my parents and we all just love his work and professionalism. We also got a very sweet thank you gift!"</p>
+          <div class="review-footer">
+            <div class="review-avatar">K</div>
+            <div><div class="review-name">Kaity Malone</div><div class="review-src">Google · 11 months ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"We've had Manuel and his team paint the exterior of our home and our kitchen cabinets. We wouldn't go anywhere else. His attention to detail, communication, and quality of work are exceptional. We recommend them to everyone."</p>
+          <div class="review-footer">
+            <div class="review-avatar">J</div>
+            <div><div class="review-name">Jake Teeter</div><div class="review-src">Google · 1 month ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal rd1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Monkey's Painting was punctual, responsive, and highly skilled. They exceeded all our expectations and offered excellent value. We will gladly use them for any future painting projects."</p>
+          <div class="review-footer">
+            <div class="review-avatar">C</div>
+            <div><div class="review-name">C. Bolek</div><div class="review-src">Google · 1 month ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal rd2">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Start to finish. Absolutely what people are looking for. Great advice choosing color. Professional helpers, on time, reasonable price. They even cleaned my ceiling fan."</p>
+          <div class="review-footer">
+            <div class="review-avatar">J</div>
+            <div><div class="review-name">Joe</div><div class="review-src">Google · 3 weeks ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"Manuel did a fantastic job! He was hired to paint our home's exterior and finish some drywall repairs. They started and finished on schedule and we could not be more happy with the work done."</p>
+          <div class="review-footer">
+            <div class="review-avatar">D</div>
+            <div><div class="review-name">Dennis H.</div><div class="review-src">Google · 1 year ago</div></div>
+          </div>
+        </div>
+        <div class="review-card reveal rd1">
+          <div class="review-stars">★★★★★</div>
+          <p class="review-text">"These guys gave a prompt bid, showed up when they said they would and got the job done as promised. Nice prep-job and color change on our solid color stained deck. It looks brand new. 100% satisfied."</p>
+          <div class="review-footer">
+            <div class="review-avatar">D</div>
+            <div><div class="review-name">Doug Cram</div><div class="review-src">Google · 6 months ago</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote">
+    <div class="container">
+      <div class="quote-inner">
+        <div class="quote-left">
+          <div class="label-tag reveal">Get Started</div>
+          <h2 class="quote-heading reveal rd1">Get Your<br /><span>Free Quote</span><br />Today</h2>
+          <p class="quote-sub reveal rd2">Ready to transform your space? Fill out the form or reach us directly — we respond fast and always show up when we say we will.</p>
+          <div class="cinfo-list reveal rd3">
+            <div class="cinfo"><span class="cinfo-icon">📞</span><div><div class="cinfo-lbl">Call or Text</div><div class="cinfo-val"><a href="tel:+15036166032">(503) 616-6032</a></div></div></div>
+            <div class="cinfo"><span class="cinfo-icon">📍</span><div><div class="cinfo-lbl">Address</div><div class="cinfo-val">2820 Talisman Ln, Forest Grove, OR 97116</div></div></div>
+            <div class="cinfo"><span class="cinfo-icon">🕐</span><div><div class="cinfo-lbl">Hours</div><div class="cinfo-val">Monday – Friday: 8AM – 6PM</div></div></div>
+          </div>
+        </div>
+        <div class="qform reveal rd2">
+          <div class="qform-title">Request a Free Estimate</div>
+          <form onsubmit="handleSubmit(event)">
+            <div class="form-row-2">
+              <div class="fg"><label for="fn">First Name</label><input type="text" id="fn" placeholder="John" required /></div>
+              <div class="fg"><label for="ln">Last Name</label><input type="text" id="ln" placeholder="Smith" required /></div>
+            </div>
+            <div class="form-row-2">
+              <div class="fg"><label for="ph">Phone *</label><input type="tel" id="ph" placeholder="(503) 000-0000" required /></div>
+              <div class="fg"><label for="em">Email</label><input type="email" id="em" placeholder="john@email.com" /></div>
+            </div>
+            <div class="fg full">
+              <label for="svc">Service Needed *</label>
+              <select id="svc" required>
+                <option value="" disabled selected>Select a service...</option>
+                <option>Exterior Painting</option>
+                <option>Interior Painting</option>
+                <option>Cabinet Refinishing / Painting</option>
+                <option>Staining</option>
+                <option>Accent Walls</option>
+                <option>Drywall Repair</option>
+                <option>Wallpaper Removal</option>
+                <option>Pressure Washing</option>
+                <option>Multiple Services</option>
+                <option>Not Sure — Need Estimate</option>
+              </select>
+            </div>
+            <div class="fg full"><label for="addr">Property Address</label><input type="text" id="addr" placeholder="123 Main St, Forest Grove, OR" /></div>
+            <div class="fg full"><label for="msg">Project Details</label><textarea id="msg" placeholder="Tell us about your project, timeline, or any questions..."></textarea></div>
+            <div class="form-submit">
+              <button type="submit" class="btn btn-terra">
+                Send My Free Quote Request
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+            </div>
+            <p class="form-note">No spam. No obligation. Just a free, honest estimate.</p>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:4px;">
+            <div style="width:40px;height:40px;background:var(--terra);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0;">🐒</div>
+            <div class="footer-logo-name">Monkey's <span>Painting</span> LLC</div>
+          </div>
+          <p class="footer-desc">15 years of experience. Interior, exterior, cabinets, staining, drywall repair, pressure washing &amp; more. Forest Grove, OR.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Services</div>
+          <ul class="footer-links">
+            <li><a href="#services">Exterior Painting</a></li>
+            <li><a href="#services">Interior Painting</a></li>
+            <li><a href="#services">Cabinet Refinishing</a></li>
+            <li><a href="#services">Staining</a></li>
+            <li><a href="#services">Drywall Repair</a></li>
+            <li><a href="#services">Pressure Washing</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-contacts">
+            <li>📞 <a href="tel:+15036166032">(503) 616-6032</a></li>
+            <li>📍 2820 Talisman Ln, Forest Grove, OR 97116</li>
+            <li>🕐 Mon–Fri: 8AM – 6PM</li>
+          </ul>
+          <div style="margin-top:22px;"><a href="#quote" class="btn btn-outline-w" style="padding:11px 22px;font-size:0.78rem;">Get Free Quote</a></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">&copy; 2025 Monkey's Painting LLC. All rights reserved.</div>
+        <div class="footer-lic"><span class="footer-dot"></span>Licensed &amp; Insured · Forest Grove, OR &amp; Surrounding Areas</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navbar=document.getElementById('navbar');
+    const floatCta=document.getElementById('floatCta');
+    const heroEl=document.getElementById('hero');
+    window.addEventListener('scroll',()=>{
+      navbar.classList.toggle('shadow',window.scrollY>10);
+      floatCta.classList.toggle('visible',heroEl.getBoundingClientRect().bottom<0);
+    },{passive:true});
+
+    const hamburger=document.getElementById('hamburger');
+    const mobileMenu=document.getElementById('mobileMenu');
+    const mobileClose=document.getElementById('mobileClose');
+    hamburger.addEventListener('click',()=>{mobileMenu.classList.add('open');document.body.style.overflow='hidden';});
+    mobileClose.addEventListener('click',closeMobile);
+    mobileMenu.addEventListener('click',e=>{if(e.target===mobileMenu)closeMobile();});
+    function closeMobile(){mobileMenu.classList.remove('open');document.body.style.overflow='';}
+
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});
+    },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+    function handleSubmit(e){
+      e.preventDefault();
+      const btn=e.target.querySelector('button[type="submit"]');
+      const orig=btn.innerHTML;
+      btn.innerHTML='Sending...';btn.disabled=true;
+      setTimeout(()=>{
+        btn.innerHTML='✓ Sent! We\'ll be in touch soon.';
+        btn.style.background='var(--green)';
+        e.target.reset();
+        setTimeout(()=>{btn.innerHTML=orig;btn.style.background='';btn.disabled=false;},5000);
+      },1200);
+    }
+  </script>
+</body>
+</html>
